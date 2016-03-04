@@ -9,8 +9,8 @@ POSIBLES MEJORAS MEMORIA
 
 
 
-PRÓXIMO
--------
+TERMINADO
+----------
 
 * - Retocar estilos home y detalle
 
@@ -44,8 +44,15 @@ http://stackoverflow.com/questions/5886713/automatic-post-registration-user-auth
 
 * - Zona privada de usuario autenticado: Ver mis compras
 
+* - Revisar memoria, indice y secciones.
+
 =============
 
+
+
+
+PRÓXIMO
+--------
 
 - Estadisticas usuarios de establecimientos
 
@@ -55,7 +62,9 @@ http://stackoverflow.com/questions/5886713/automatic-post-registration-user-auth
 
 - CSRF attacks en formulario de login y otros
 
+- Revisar memoria, repasar todo el texto.
 
+- Hacer presentación powerpoint
 
 
 
