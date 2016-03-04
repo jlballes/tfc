@@ -1,0 +1,16 @@
+#mis_compras img{
+	width: 100px;
+	float: left;
+}
+
+#mis_compras .thumbnail{
+	min-height: 75px;
+}
+
+#mis_compras .canjeado{
+	color: red;
+}
+
+#mis_compras .pendiente{
+	color: green;
+}

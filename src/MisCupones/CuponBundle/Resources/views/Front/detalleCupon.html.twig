@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{cupon.titulo}} | Cuponify!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+ 
+    <link href="{{ asset('bundles/CuponBundle/css/detalle_cupon.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="row">
+
+        <div class="col-md-12 col-xs-12">
+
+            <h4 class="titulo-cupon">{{cupon.titulo}}</h4>
+
+            <div class="col-md-6 col-xs-12">
+                <img id="imagen-detalle" class="img-responsive" src="http://localhost/misCupones/web/{{ cupon.rutaImagen }}" alt="">
+            </div>
+
+            <div class="caption-full col-md-6 col-xs-12">
+                <h4 class="precio-anterior">{{cupon.precioAnterior}}€</h4>
+                <h4 class="precio-actual">{{cupon.precio}}€</h4>
+                
+                <div class="body">
+                    <p>{{cupon.descripcion}}</p>
+                </div>
+
+                {% if tiempo is not null %}
+                    <div class="col-md-12 tiempo-limitado">TIEMPO LIMITADO!!</div>
+                    <div class="col-md-12 tiempo">{{ tiempo }}</div>
+                {% else %}
+                    <div class="col-md-12 tiempo">ESTE CUPÓN YA NO ESTÁ A LA VENTA.</div>
+                {% endif %}
+
+                <div class="col-md-12 caducidad">
+                    <span>Fecha de caducidad para canjear: </span>
+                    <span>{{ cupon.fechaFinCanjeo|date('d/m/Y') }}</span>
+                </div>
+
+                <a id="a-boton-comprar" href="{{ url('redirigiendo_pasarela_pago')}}" class="btn btn-primary {% if tiempo is null %} disabled {% endif %}">Comprar</a>
+                
+            </div>
+
+        </div>
+
+        <div id="establecimientos" class="col-md-12 col-xs-12">
+
+            <h4 class="titulo-establecimientos">Establecimientos</h4>
+            <p>A continuación le mostramos los establecimientos donde puede canjear este cupón:</p>
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                {% for e in establecimientos %}
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="heading{{loop.index0}}">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{loop.index0}}" aria-expanded="true" aria-controls="collapse{{loop.index0}}">
+                                    {{loop.index}} - {{e.titulo}}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse{{loop.index0}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{loop.index0}}">
+                            <div class="panel-body">
+                                <div class="col-md-8 col-xs-12">
+                                    <p>{{e.descripcion}}</p>
+                                    <p>Más información:</p>
+                                    <ul>
+                                        <li><strong>Dirección: </strong>{{e.direccion}}, {{e.codigoPostal}}, {{e.municipio}}, {{e.provincia}}</li>
+                                        <li><strong>Teléfono: </strong>{{e.telefono}}</li>
+                                        <li><strong>Email: </strong>{{e.email}}</li>
+                                        <li><strong>Web: </strong>{{e.web}}</li>
+                                    </ul>
+                                </div>
+                                <div class="gmaps" class="col-md-4 col-xs-12">
+                                    <iframe width="600" height="200" frameborder="0" style="border:0"
+                                    src="https://www.google.com/maps/embed/v1/place?q={{e.latitud}},{{e.longitud}}&key=AIzaSyAl-sd14Rfnj4S4Y0_hnNnoc72CHTCzt0A" allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %} 
+
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

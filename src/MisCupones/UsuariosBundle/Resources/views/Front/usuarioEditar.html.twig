@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Editar mis datos | Cuponify!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link href="{{ asset('bundles/CuponBundle/css/usuario.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="row first-row">
+
+        <div class="col-md-6 col-xs-12">
+            <h3>Mi cuenta</h3>
+
+            <ul class="nav nav-tabs nav-justified pestanas">
+                <li role="presentation" class="active"><a data-toggle="tab" href="#usuario_editar">Editar mis datos</a></li>
+                <li role="presentation"><a data-toggle="tab" href="#mis_compras">Mis compras</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="usuario_editar" class="tab-pane fade in active">
+
+                    {% for flash_message in app.session.flashbag.get('notice') %}
+                        <div class="alert alert-success">
+                            {{ flash_message }}
+                        </div>
+                    {% endfor %}
+
+                    {{ form_start(form) }}
+                        {{ form_row(form.nombre, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_row(form.apellidos, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_row(form.password.first, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_row(form.password.second, {'attr': {'class': 'form-control'}}) }}
+
+                        <button class="btn btn-primary" type="submit">Enviar</button>
+                    {{ form_end(form) }}
+                </div>
+
+                <div id="mis_compras" class="tab-pane fade row">
+
+                    <p>Para canjear sus cupones anote el código y pongase en contacto con los establecimientos que puede encontrar haciendo click sobre el nombre de cada cupón.</p>
+
+                    {% for c in compras %}
+                        <div class="col-md-12">
+                            <div class="thumbnail row">
+                                <div class="col-md-3 col-xs-4">
+                                    <img src="http://localhost/misCupones/web/{{ c['ruta_imagen'] }}" alt="">
+                                </div>
+                                <div class="col-md-9 col-xs-8">
+                                    <div class="col-md-12 col-xs-12 pull-left">
+                                        <a href="{{ url('detalle_cupon', {'id_cupon': c['cupon_id'] }) }}">
+                                            {{ c['titulo'] }}
+                                        </a>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 pull-left">
+                                        <strong> Código: </strong><span>{{ c['codigo'] }}</span>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 pull-left">
+                                        <strong>Válido hasta: </strong><span>{{ c['fecha_fin_canjeo']|date("d/m/Y") }}</span>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 pull-left">
+                                        <strong>Fecha de compra: </strong><span>{{ c['fecha_compra']|date("d/m/Y") }}</span>
+                                    </div>
+                                    <div class="col-md-12  col-xs-12 pull-left">
+                                        <strong>Precio: </strong><span>{{ c['precio'] }} €</span>
+                                    </div>
+                                    {% if c['canjeado'] %}
+                                        <div class="col-md-12  col-xs-12 pull-left">
+                                            <span class="canjeado">CUPÓN CANJEADO</span>
+                                        </div>
+                                    {% else %}
+                                        <div class="col-md-12  col-xs-12 pull-left">
+                                            <span class="pendiente">CUPÓN PENDIENTE DE CANJEAR</span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

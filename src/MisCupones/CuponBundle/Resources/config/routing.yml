@@ -1,0 +1,17 @@
+homepage:
+    path:     /
+    defaults: { _controller: CuponBundle:Front:index }
+
+detalle_cupon:
+    path:     /cupon/{id_cupon}
+    defaults: { _controller: CuponBundle:Front:detalleCupon }
+    requirements:
+        id_cupon: \d+
+
+mis_cupones:
+    path:     /usuario/mis-cupones
+    defaults: { _controller: CuponBundle:Front:misCupones }
+
+redirigiendo_pasarela_pago:
+    path:     /redirigiendo-pasarela-pago
+    defaults: { _controller: CuponBundle:Front:redirigiendoPasarelaPago }

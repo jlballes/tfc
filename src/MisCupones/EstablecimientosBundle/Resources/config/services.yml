@@ -1,0 +1,4 @@
+services:
+#    establecimientos.example:
+#        class: MisCupones\EstablecimientosBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

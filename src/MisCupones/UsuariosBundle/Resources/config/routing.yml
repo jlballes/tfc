@@ -1,0 +1,21 @@
+usuario_login:
+    path:     /login
+    defaults: { _controller: UsuariosBundle:Front:login }
+
+usuario_login_check:
+    path:     /login-check
+
+usuario_logout:
+    path:     /logout
+
+usuario_registro:
+    path:     /registro
+    defaults: { _controller: UsuariosBundle:Front:registro }
+
+usuario_recuperar_pass:
+    path:     /recuperar-password
+    defaults: { _controller: UsuariosBundle:Front:recuperarPass }
+
+usuario_editar:
+    path:     /usuario/editar
+    defaults: { _controller: UsuariosBundle:Front:usuarioEditar }

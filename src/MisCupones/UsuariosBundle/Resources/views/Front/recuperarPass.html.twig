@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Iniciar sesión | Cuponify!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+ 
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="row first-row">
+
+        <div class="col-md-6 col-xs-12">
+            <h3>Recuperar contraseña</h3>
+
+            <p>Introduce el email con el que te registraste en Cuponify! y recibirás un email con la información necesaria para reestablecer tu contraseña.</p>
+
+            {% if estado == 2 %}
+                <div class="alert alert-danger" role="alert">No encontramos este email en nuestra base de datos.</div>
+            {% elseif estado == 1 %}
+                <div class="alert alert-success" role="alert">Email enviado!!</div>
+            {% endif %}
+
+            <form action="{{ path('usuario_recuperar_pass') }}" method="post">
+                <input placeholder="Email" class="form-control" type="text" id="email" name="email" value="{{ last_email }}" />
+                <input class="btn btn-primary" type="submit" name="login" value="Recuperar contraseña" />
+            </form>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

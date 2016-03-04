@@ -1,0 +1,65 @@
+
+POSIBLES MEJORAS MEMORIA
+------------------------
+- Añadir relaciones Doctrine2, ahora esta la referencia a la web.
+- Wireframes navegación (copiar de lo hecho en sucio). Se puede poner en el power point.
+- Cambie tipo de usuario por rol y añadi atributo salt
+- Añadir nuevos admin generators
+- Registro de usaurio con login automatico
+
+
+
+PRÓXIMO
+-------
+
+* - Retocar estilos home y detalle
+
+* - Detalle cupón: Mostrar info de establecimientos donde se puede usar el cupon.
+
+* - Imagenes en home y detalle (aunque sea subir al server y meter en phpmyadmin ruta tal cual)
+
+* - Ver método de usuarios, con roles, permisos, etc.
+http://symfony.com/doc/2.3/book/security.html
+http://symfony.com/doc/2.3/cookbook/security/entity_provider.html
+Seguir la memoria punto Seguridad
+
+* - Login
+Punto 10.4 pag 99
+
+* - Logout
+
+* - Mostrar usuario logado, mostrar cerrar sesión y enlace a zona privada
+
+* - Recuperar pass
+
+* - Registro con login automatico
+http://symfony.com/doc/2.3/cookbook/doctrine/registration_form.html
+http://stackoverflow.com/questions/5886713/automatic-post-registration-user-authentication
+
+* - Maquetar registro
+
+* - Comprobar caducidad cupón y desactivar botón de comprar en detalle
+
+* - Zona privada de usuario autenticado: Editar datos de usuario
+
+* - Zona privada de usuario autenticado: Ver mis compras
+
+=============
+
+
+- Estadisticas usuarios de establecimientos
+
+- Admin generator: https://github.com/javiereguiluz/EasyAdminBundle
+
+- Encriptar passwords
+
+- CSRF attacks en formulario de login y otros
+
+
+
+
+
+
+TEMA de DISEÑO
+---------------
+http://startbootstrap.com/template-overviews/heroic-features/

@@ -1,0 +1,4 @@
+services:
+#    compras.example:
+#        class: MisCupones\ComprasBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

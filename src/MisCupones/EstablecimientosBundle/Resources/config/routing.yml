@@ -1,0 +1,3 @@
+establecimientos_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: EstablecimientosBundle:Default:index }

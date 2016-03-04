@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Iniciar sesión | Cuponify!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+ 
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="row first-row">
+
+        <div class="col-md-6 col-xs-12">
+            <h3>Registro de usuario</h3>
+
+            <p>Rellena el siguiente formulario y registrate en Cuponify!</p>
+
+            {{ form_start(form) }}
+                {{ form_row(form.nombre, {'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.apellidos, {'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.password.first, {'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.password.second, {'attr': {'class': 'form-control'}}) }}
+
+                <button class="btn btn-primary" type="submit">Enviar</button>
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

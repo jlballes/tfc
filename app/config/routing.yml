@@ -1,0 +1,15 @@
+compras:
+    resource: "@ComprasBundle/Resources/config/routing.yml"
+    prefix:   /
+
+usuarios:
+    resource: "@UsuariosBundle/Resources/config/routing.yml"
+    prefix:   /
+
+establecimientos:
+    resource: "@EstablecimientosBundle/Resources/config/routing.yml"
+    prefix:   /
+
+cupon:
+    resource: "@CuponBundle/Resources/config/routing.yml"
+    prefix:   /

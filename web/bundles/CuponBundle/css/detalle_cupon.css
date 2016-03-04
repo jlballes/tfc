@@ -1,0 +1,99 @@
+/*!
+ * Start Bootstrap - Shop Item HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.precio-anterior{
+	text-decoration: line-through;
+    float: left;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.precio-actual{
+	color: green;
+    font-size: 20px;
+}
+
+.pull-right.precio-anterior{
+	margin-left: 20px;
+}
+
+h4.titulo-cupon{
+    color: #337ab7;
+    font-size: 30px
+}
+
+.body{
+    clear: both;
+}
+
+#a-boton-comprar{
+    margin-top: 20px;
+    width: 200px;
+    font-size: 25px;
+}
+
+.tiempo-limitado{
+    font-size: 14px;
+    color: #aaa;
+}
+.tiempo{
+    color: #e35205;
+    font-size: 14px;
+
+}
+
+.caducidad{
+    margin-top: 10px;
+    color: #aaa;
+}
+
+#establecimientos{
+    margin-top: 30px;
+}
+
+.gmaps { 
+    position: relative; 
+    padding-bottom: 25.00%; 
+    height: 0; 
+    overflow: 
+    hidden; 
+    max-width: 100%; 
+} 
+.gmaps iframe, .gmaps object, .gmaps embed { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+}
+

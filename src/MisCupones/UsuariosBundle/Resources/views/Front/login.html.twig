@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Iniciar sesión | Cuponify!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+ 
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="row first-row">
+
+        <div class="col-md-6 col-xs-12">
+            <h3>Iniciar sesión</h3>
+
+            <p>Utilice el email y la contraseña con la que se registro en Cuponify! Si no recuerda la contraseña haga click <a href="{{ url('usuario_recuperar_pass') }}">aquí.</a> Si aun no tiene cuenta <a href="{{ url('usuario_registro') }}">registresé!</a></p>
+
+            {% if error %}
+                <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <form action="{{ path('usuario_login_check') }}" method="post">
+                <input placeholder="Email" class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" />
+                <input placeholder="Contraseña" class="form-control" type="password" id="password" name="_password" />
+                <input class="btn btn-primary" type="submit" name="login" value="Acceder" />
+            </form>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}
