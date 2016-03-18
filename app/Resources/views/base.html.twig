@@ -31,16 +31,25 @@
                         <li>
                             <a href="#">Ayuda</a>
                         </li>
+
                         <li>
                             <a href="#">Contacto</a>
                         </li>
-                        {% if is_granted('ROLE_USUARIO') or is_granted('ROLE_SUPERADMIN') or is_granted('ROLE_USUARIO_ESTABLECIMIENTO')%}
+
+                        {% if is_granted('ROLE_USUARIO') or is_granted('ROLE_SUPERADMIN') or is_granted('ROLE_UESTABLECIMIENTO')%}
                         <li>
                             <a href="{{ url('usuario_editar') }}">Mi cuenta</a>
                         </li>
                         {% endif %}
+
+                        {% if is_granted('ROLE_UESTABLECIMIENTO')%}
                         <li>
-                            {% if is_granted('ROLE_USUARIO') or is_granted('ROLE_SUPERADMIN') or is_granted('ROLE_USUARIO_ESTABLECIMIENTO')%}
+                            <a href="{{ url('usuario_establecimiento') }}">Estadísticas</a>
+                        </li>
+                        {% endif %}
+
+                        <li>
+                            {% if is_granted('ROLE_USUARIO') or is_granted('ROLE_SUPERADMIN') or is_granted('ROLE_UESTABLECIMIENTO')%}
                                 <a href="{{ url('usuario_logout') }}">Cerrar sesión</a>
                             {% else %}
                                 <a href="{{ url('usuario_login') }}">Iniciar sesión</a>

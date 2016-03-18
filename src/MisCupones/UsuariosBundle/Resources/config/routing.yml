@@ -19,3 +19,7 @@ usuario_recuperar_pass:
 usuario_editar:
     path:     /usuario/editar
     defaults: { _controller: UsuariosBundle:Front:usuarioEditar }
+
+usuario_establecimiento:
+    path:     /estadisticas
+    defaults: { _controller: UsuariosBundle:Front:estadisticas }

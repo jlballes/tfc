@@ -70,39 +70,56 @@ class __TwigTemplate_ff77b10b49678097ae7d51ccf6580d23f44e160a6c3533a3c6de67ca91c
                         <li>
                             <a href=\"#\">Ayuda</a>
                         </li>
+
                         <li>
                             <a href=\"#\">Contacto</a>
                         </li>
+
                         ";
-        // line 37
-        if ((($this->env->getExtension('security')->isGranted("ROLE_USUARIO") || $this->env->getExtension('security')->isGranted("ROLE_SUPERADMIN")) || $this->env->getExtension('security')->isGranted("ROLE_USUARIO_ESTABLECIMIENTO"))) {
-            // line 38
+        // line 39
+        if ((($this->env->getExtension('security')->isGranted("ROLE_USUARIO") || $this->env->getExtension('security')->isGranted("ROLE_SUPERADMIN")) || $this->env->getExtension('security')->isGranted("ROLE_UESTABLECIMIENTO"))) {
+            // line 40
             echo "                        <li>
                             <a href=\"";
-            // line 39
+            // line 41
             echo $this->env->getExtension('routing')->getUrl("usuario_editar");
             echo "\">Mi cuenta</a>
                         </li>
                         ";
         }
-        // line 42
-        echo "                        <li>
+        // line 44
+        echo "
+                        ";
+        // line 45
+        if ($this->env->getExtension('security')->isGranted("ROLE_UESTABLECIMIENTO")) {
+            // line 46
+            echo "                        <li>
+                            <a href=\"";
+            // line 47
+            echo $this->env->getExtension('routing')->getUrl("usuario_establecimiento");
+            echo "\">Estadísticas</a>
+                        </li>
+                        ";
+        }
+        // line 50
+        echo "
+                        <li>
                             ";
-        // line 43
-        if ((($this->env->getExtension('security')->isGranted("ROLE_USUARIO") || $this->env->getExtension('security')->isGranted("ROLE_SUPERADMIN")) || $this->env->getExtension('security')->isGranted("ROLE_USUARIO_ESTABLECIMIENTO"))) {
-            // line 44
+        // line 52
+        if ((($this->env->getExtension('security')->isGranted("ROLE_USUARIO") || $this->env->getExtension('security')->isGranted("ROLE_SUPERADMIN")) || $this->env->getExtension('security')->isGranted("ROLE_UESTABLECIMIENTO"))) {
+            // line 53
             echo "                                <a href=\"";
             echo $this->env->getExtension('routing')->getUrl("usuario_logout");
             echo "\">Cerrar sesión</a>
                             ";
         } else {
-            // line 46
+            // line 55
             echo "                                <a href=\"";
             echo $this->env->getExtension('routing')->getUrl("usuario_login");
             echo "\">Iniciar sesión</a>
                             ";
         }
-        // line 48
+        // line 57
         echo "
                         </li>
                     </ul>
@@ -116,9 +133,9 @@ class __TwigTemplate_ff77b10b49678097ae7d51ccf6580d23f44e160a6c3533a3c6de67ca91c
         <div class=\"container\">
 
             ";
-        // line 60
+        // line 69
         $this->displayBlock('body', $context, $blocks);
-        // line 61
+        // line 70
         echo "
             <hr>
 
@@ -137,20 +154,20 @@ class __TwigTemplate_ff77b10b49678097ae7d51ccf6580d23f44e160a6c3533a3c6de67ca91c
 
         <!-- jQuery -->
         <script src=\"";
-        // line 78
+        // line 87
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/CuponBundle/js/jquery.js"), "html", null, true);
         echo "\"></script>
 
         <!-- Bootstrap Core JavaScript -->
         <script src=\"";
-        // line 81
+        // line 90
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/CuponBundle/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
 
         ";
-        // line 83
+        // line 92
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 84
+        // line 93
         echo "    </body>
 </html>
 ";
@@ -167,12 +184,12 @@ class __TwigTemplate_ff77b10b49678097ae7d51ccf6580d23f44e160a6c3533a3c6de67ca91c
     {
     }
 
-    // line 60
+    // line 69
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 83
+    // line 92
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -189,7 +206,7 @@ class __TwigTemplate_ff77b10b49678097ae7d51ccf6580d23f44e160a6c3533a3c6de67ca91c
 
     public function getDebugInfo()
     {
-        return array (  176 => 83,  171 => 60,  166 => 6,  160 => 5,  154 => 84,  152 => 83,  147 => 81,  141 => 78,  122 => 61,  120 => 60,  106 => 48,  100 => 46,  94 => 44,  92 => 43,  89 => 42,  83 => 39,  80 => 38,  78 => 37,  64 => 26,  47 => 12,  42 => 10,  35 => 7,  33 => 6,  29 => 5,  23 => 1,);
+        return array (  193 => 92,  188 => 69,  183 => 6,  177 => 5,  171 => 93,  169 => 92,  164 => 90,  158 => 87,  139 => 70,  137 => 69,  123 => 57,  117 => 55,  111 => 53,  109 => 52,  105 => 50,  99 => 47,  96 => 46,  94 => 45,  91 => 44,  85 => 41,  82 => 40,  80 => 39,  64 => 26,  47 => 12,  42 => 10,  35 => 7,  33 => 6,  29 => 5,  23 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -225,16 +242,25 @@ class __TwigTemplate_ff77b10b49678097ae7d51ccf6580d23f44e160a6c3533a3c6de67ca91c
 /*                         <li>*/
 /*                             <a href="#">Ayuda</a>*/
 /*                         </li>*/
+/* */
 /*                         <li>*/
 /*                             <a href="#">Contacto</a>*/
 /*                         </li>*/
-/*                         {% if is_granted('ROLE_USUARIO') or is_granted('ROLE_SUPERADMIN') or is_granted('ROLE_USUARIO_ESTABLECIMIENTO')%}*/
+/* */
+/*                         {% if is_granted('ROLE_USUARIO') or is_granted('ROLE_SUPERADMIN') or is_granted('ROLE_UESTABLECIMIENTO')%}*/
 /*                         <li>*/
 /*                             <a href="{{ url('usuario_editar') }}">Mi cuenta</a>*/
 /*                         </li>*/
 /*                         {% endif %}*/
+/* */
+/*                         {% if is_granted('ROLE_UESTABLECIMIENTO')%}*/
 /*                         <li>*/
-/*                             {% if is_granted('ROLE_USUARIO') or is_granted('ROLE_SUPERADMIN') or is_granted('ROLE_USUARIO_ESTABLECIMIENTO')%}*/
+/*                             <a href="{{ url('usuario_establecimiento') }}">Estadísticas</a>*/
+/*                         </li>*/
+/*                         {% endif %}*/
+/* */
+/*                         <li>*/
+/*                             {% if is_granted('ROLE_USUARIO') or is_granted('ROLE_SUPERADMIN') or is_granted('ROLE_UESTABLECIMIENTO')%}*/
 /*                                 <a href="{{ url('usuario_logout') }}">Cerrar sesión</a>*/
 /*                             {% else %}*/
 /*                                 <a href="{{ url('usuario_login') }}">Iniciar sesión</a>*/

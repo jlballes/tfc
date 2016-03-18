@@ -35,7 +35,8 @@ security:
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
 
     access_control:
-        - { path: ^/usuario/*, roles: ROLE_USUARIO }
+        - { path: ^/usuario/*, roles: [ROLE_USUARIO, ROLE_UESTABLECIMIENTO] }
+        - { path: ^/estadisticas, roles: ROLE_UESTABLECIMIENTO }
 
     encoders:
         MisCupones\UsuariosBundle\Entity\Usuario: plaintext

@@ -39,21 +39,42 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
                 // usuario_login_check
                 if ($pathinfo === '/login-check') {
-                    return array (  '_controller' => 'MisCupones\\UsuariosBundle\\Controller\\FrontController::loginCheckAction',  '_route' => 'usuario_login_check',);
+                    return array('_route' => 'usuario_login_check');
                 }
 
             }
 
             // usuario_logout
             if ($pathinfo === '/logout') {
-                return array (  '_controller' => 'MisCupones\\UsuariosBundle\\Controller\\FrontController::logoutAction',  '_route' => 'usuario_logout',);
+                return array('_route' => 'usuario_logout');
             }
 
         }
 
-        // usuario_registro
-        if ($pathinfo === '/registro') {
-            return array (  '_controller' => 'MisCupones\\UsuariosBundle\\Controller\\FrontController::registroAction',  '_route' => 'usuario_registro',);
+        if (0 === strpos($pathinfo, '/re')) {
+            // usuario_registro
+            if ($pathinfo === '/registro') {
+                return array (  '_controller' => 'MisCupones\\UsuariosBundle\\Controller\\FrontController::registroAction',  '_route' => 'usuario_registro',);
+            }
+
+            // usuario_recuperar_pass
+            if ($pathinfo === '/recuperar-password') {
+                return array (  '_controller' => 'MisCupones\\UsuariosBundle\\Controller\\FrontController::recuperarPassAction',  '_route' => 'usuario_recuperar_pass',);
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/usuario')) {
+            // usuario_editar
+            if ($pathinfo === '/usuario/editar') {
+                return array (  '_controller' => 'MisCupones\\UsuariosBundle\\Controller\\FrontController::usuarioEditarAction',  '_route' => 'usuario_editar',);
+            }
+
+            // usuario_establecimiento
+            if ($pathinfo === '/usuario-establecimiento') {
+                return array (  '_controller' => 'MisCupones\\UsuariosBundle\\Controller\\FrontController::usuarioEstablecimientoAction',  '_route' => 'usuario_establecimiento',);
+            }
+
         }
 
         // establecimientos_homepage

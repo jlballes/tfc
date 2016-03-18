@@ -49,33 +49,39 @@ class __TwigTemplate_11b559c70ff6eceedcb515771c8f45f05deabbe7604f10014db0f142c5d
         // line 11
         echo "
 
-    <div class=\"row\" style=\"margin-top:90px;\">
+    <div class=\"row first-row\">
 
-        <div class=\"col-md-12 col-xs-12\">
+        <div class=\"col-md-6 col-xs-12\">
+            <h3>Iniciar sesión</h3>
+
+            <p>Utilice el email y la contraseña con la que se registro en Cuponify! Si no recuerda la contraseña haga click <a href=\"";
+        // line 18
+        echo $this->env->getExtension('routing')->getUrl("usuario_recuperar_pass");
+        echo "\">aquí.</a> Si aun no tiene cuenta <a href=\"";
+        echo $this->env->getExtension('routing')->getUrl("usuario_registro");
+        echo "\">registresé!</a></p>
 
             ";
-        // line 17
+        // line 20
         if ((isset($context["error"]) ? $context["error"] : null)) {
-            // line 18
-            echo "                <div>";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["error"]) ? $context["error"] : null), "message", array()), "html", null, true);
+            // line 21
+            echo "                <div class=\"alert alert-danger\" role=\"alert\">";
+            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($this->getAttribute((isset($context["error"]) ? $context["error"] : null), "messageKey", array()), $this->getAttribute((isset($context["error"]) ? $context["error"] : null), "messageData", array()), "security"), "html", null, true);
             echo "</div>
             ";
         }
-        // line 20
+        // line 23
         echo "
             <form action=\"";
-        // line 21
+        // line 24
         echo $this->env->getExtension('routing')->getPath("usuario_login_check");
         echo "\" method=\"post\">
-                <label for=\"username\">Email:</label>
-                <input type=\"text\" id=\"username\" name=\"_username\" value=\"";
-        // line 23
+                <input placeholder=\"Email\" class=\"form-control\" type=\"text\" id=\"username\" name=\"_username\" value=\"";
+        // line 25
         echo twig_escape_filter($this->env, (isset($context["last_username"]) ? $context["last_username"] : null), "html", null, true);
         echo "\" />
-                <label for=\"password\">Contraseña:</label>
-                <input type=\"password\" id=\"password\" name=\"_password\" />
-                <input type=\"submit\" name=\"login\" value=\"Acceder\" />
+                <input placeholder=\"Contraseña\" class=\"form-control\" type=\"password\" id=\"password\" name=\"_password\" />
+                <input class=\"btn btn-primary\" type=\"submit\" name=\"login\" value=\"Acceder\" />
             </form>
 
         </div>
@@ -98,7 +104,7 @@ class __TwigTemplate_11b559c70ff6eceedcb515771c8f45f05deabbe7604f10014db0f142c5d
 
     public function getDebugInfo()
     {
-        return array (  74 => 23,  69 => 21,  66 => 20,  60 => 18,  58 => 17,  50 => 11,  47 => 10,  39 => 6,  36 => 5,  30 => 3,  11 => 1,);
+        return array (  81 => 25,  77 => 24,  74 => 23,  68 => 21,  66 => 20,  59 => 18,  50 => 11,  47 => 10,  39 => 6,  36 => 5,  30 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
@@ -113,20 +119,21 @@ class __TwigTemplate_11b559c70ff6eceedcb515771c8f45f05deabbe7604f10014db0f142c5d
 /* {% block body %}*/
 /* */
 /* */
-/*     <div class="row" style="margin-top:90px;">*/
+/*     <div class="row first-row">*/
 /* */
-/*         <div class="col-md-12 col-xs-12">*/
+/*         <div class="col-md-6 col-xs-12">*/
+/*             <h3>Iniciar sesión</h3>*/
+/* */
+/*             <p>Utilice el email y la contraseña con la que se registro en Cuponify! Si no recuerda la contraseña haga click <a href="{{ url('usuario_recuperar_pass') }}">aquí.</a> Si aun no tiene cuenta <a href="{{ url('usuario_registro') }}">registresé!</a></p>*/
 /* */
 /*             {% if error %}*/
-/*                 <div>{{ error.message }}</div>*/
+/*                 <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>*/
 /*             {% endif %}*/
 /* */
 /*             <form action="{{ path('usuario_login_check') }}" method="post">*/
-/*                 <label for="username">Email:</label>*/
-/*                 <input type="text" id="username" name="_username" value="{{ last_username }}" />*/
-/*                 <label for="password">Contraseña:</label>*/
-/*                 <input type="password" id="password" name="_password" />*/
-/*                 <input type="submit" name="login" value="Acceder" />*/
+/*                 <input placeholder="Email" class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" />*/
+/*                 <input placeholder="Contraseña" class="form-control" type="password" id="password" name="_password" />*/
+/*                 <input class="btn btn-primary" type="submit" name="login" value="Acceder" />*/
 /*             </form>*/
 /* */
 /*         </div>*/

@@ -164,6 +164,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'MisCupones\\UsuariosBundle\\Controller\\FrontController::usuarioEditarAction',  '_route' => 'usuario_editar',);
         }
 
+        // usuario_establecimiento
+        if ($pathinfo === '/estadisticas') {
+            return array (  '_controller' => 'MisCupones\\UsuariosBundle\\Controller\\FrontController::estadisticasAction',  '_route' => 'usuario_establecimiento',);
+        }
+
         // establecimientos_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'establecimientos_homepage')), array (  '_controller' => 'MisCupones\\EstablecimientosBundle\\Controller\\DefaultController::indexAction',));

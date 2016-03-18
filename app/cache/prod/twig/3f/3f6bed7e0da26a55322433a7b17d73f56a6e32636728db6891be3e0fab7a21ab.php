@@ -88,24 +88,40 @@ class __TwigTemplate_ed664bc31e2689a0d69aebe6d463e3e76ad8343b712da39ef0879918c47
         echo "</p>
                 </div>
 
-                <div class=\"col-md-12 tiempo-limitado\">TIEMPO LIMITADO!!</div>
-                <div class=\"col-md-12 tiempo\">";
-        // line 33
-        echo twig_escape_filter($this->env, (isset($context["tiempo"]) ? $context["tiempo"] : null), "html", null, true);
-        echo "</div>
-
+                ";
+        // line 32
+        if ( !(null === (isset($context["tiempo"]) ? $context["tiempo"] : null))) {
+            // line 33
+            echo "                    <div class=\"col-md-12 tiempo-limitado\">TIEMPO LIMITADO!!</div>
+                    <div class=\"col-md-12 tiempo\">";
+            // line 34
+            echo twig_escape_filter($this->env, (isset($context["tiempo"]) ? $context["tiempo"] : null), "html", null, true);
+            echo "</div>
+                ";
+        } else {
+            // line 36
+            echo "                    <div class=\"col-md-12 tiempo\">ESTE CUPÓN YA NO ESTÁ A LA VENTA.</div>
+                ";
+        }
+        // line 38
+        echo "
                 <div class=\"col-md-12 caducidad\">
-                    <span>Fecha de caducidad: </span>
+                    <span>Fecha de caducidad para canjear: </span>
                     <span>";
-        // line 37
+        // line 41
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["cupon"]) ? $context["cupon"] : null), "fechaFinCanjeo", array()), "d/m/Y"), "html", null, true);
         echo "</span>
                 </div>
 
                 <a id=\"a-boton-comprar\" href=\"";
-        // line 40
+        // line 44
         echo $this->env->getExtension('routing')->getUrl("redirigiendo_pasarela_pago");
-        echo "\" class=\"btn btn-primary\">Comprar</a>
+        echo "\" class=\"btn btn-primary ";
+        if ((null === (isset($context["tiempo"]) ? $context["tiempo"] : null))) {
+            echo " disabled ";
+        }
+        echo "\">Comprar</a>
+                
             </div>
 
         </div>
@@ -118,7 +134,7 @@ class __TwigTemplate_ed664bc31e2689a0d69aebe6d463e3e76ad8343b712da39ef0879918c47
             <div class=\"panel-group\" id=\"accordion\" role=\"tablist\" aria-multiselectable=\"true\">
 
                 ";
-        // line 52
+        // line 57
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["establecimientos"]) ? $context["establecimientos"] : null));
         $context['loop'] = array(
@@ -135,22 +151,22 @@ class __TwigTemplate_ed664bc31e2689a0d69aebe6d463e3e76ad8343b712da39ef0879918c47
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["e"]) {
-            // line 53
+            // line 58
             echo "
                     <div class=\"panel panel-default\">
                         <div class=\"panel-heading\" role=\"tab\" id=\"heading";
-            // line 55
+            // line 60
             echo twig_escape_filter($this->env, $this->getAttribute($context["loop"], "index0", array()), "html", null, true);
             echo "\">
                             <h4 class=\"panel-title\">
                                 <a role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse";
-            // line 57
+            // line 62
             echo twig_escape_filter($this->env, $this->getAttribute($context["loop"], "index0", array()), "html", null, true);
             echo "\" aria-expanded=\"true\" aria-controls=\"collapse";
             echo twig_escape_filter($this->env, $this->getAttribute($context["loop"], "index0", array()), "html", null, true);
             echo "\">
                                     ";
-            // line 58
+            // line 63
             echo twig_escape_filter($this->env, $this->getAttribute($context["loop"], "index", array()), "html", null, true);
             echo " - ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "titulo", array()), "html", null, true);
@@ -159,7 +175,7 @@ class __TwigTemplate_ed664bc31e2689a0d69aebe6d463e3e76ad8343b712da39ef0879918c47
                             </h4>
                         </div>
                         <div id=\"collapse";
-            // line 62
+            // line 67
             echo twig_escape_filter($this->env, $this->getAttribute($context["loop"], "index0", array()), "html", null, true);
             echo "\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading";
             echo twig_escape_filter($this->env, $this->getAttribute($context["loop"], "index0", array()), "html", null, true);
@@ -167,13 +183,13 @@ class __TwigTemplate_ed664bc31e2689a0d69aebe6d463e3e76ad8343b712da39ef0879918c47
                             <div class=\"panel-body\">
                                 <div class=\"col-md-8 col-xs-12\">
                                     <p>";
-            // line 65
+            // line 70
             echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "descripcion", array()), "html", null, true);
             echo "</p>
                                     <p>Más información:</p>
                                     <ul>
                                         <li><strong>Dirección: </strong>";
-            // line 68
+            // line 73
             echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "direccion", array()), "html", null, true);
             echo ", ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "codigoPostal", array()), "html", null, true);
@@ -183,15 +199,15 @@ class __TwigTemplate_ed664bc31e2689a0d69aebe6d463e3e76ad8343b712da39ef0879918c47
             echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "provincia", array()), "html", null, true);
             echo "</li>
                                         <li><strong>Teléfono: </strong>";
-            // line 69
+            // line 74
             echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "telefono", array()), "html", null, true);
             echo "</li>
                                         <li><strong>Email: </strong>";
-            // line 70
+            // line 75
             echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "email", array()), "html", null, true);
             echo "</li>
                                         <li><strong>Web: </strong>";
-            // line 71
+            // line 76
             echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "web", array()), "html", null, true);
             echo "</li>
                                     </ul>
@@ -199,7 +215,7 @@ class __TwigTemplate_ed664bc31e2689a0d69aebe6d463e3e76ad8343b712da39ef0879918c47
                                 <div class=\"gmaps\" class=\"col-md-4 col-xs-12\">
                                     <iframe width=\"600\" height=\"200\" frameborder=\"0\" style=\"border:0\"
                                     src=\"https://www.google.com/maps/embed/v1/place?q=";
-            // line 76
+            // line 81
             echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "latitud", array()), "html", null, true);
             echo ",";
             echo twig_escape_filter($this->env, $this->getAttribute($context["e"], "longitud", array()), "html", null, true);
@@ -223,7 +239,7 @@ class __TwigTemplate_ed664bc31e2689a0d69aebe6d463e3e76ad8343b712da39ef0879918c47
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['e'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 83
+        // line 88
         echo " 
 
             </div>
@@ -247,7 +263,7 @@ class __TwigTemplate_ed664bc31e2689a0d69aebe6d463e3e76ad8343b712da39ef0879918c47
 
     public function getDebugInfo()
     {
-        return array (  227 => 83,  203 => 76,  195 => 71,  191 => 70,  187 => 69,  177 => 68,  171 => 65,  163 => 62,  154 => 58,  148 => 57,  143 => 55,  139 => 53,  122 => 52,  107 => 40,  101 => 37,  94 => 33,  87 => 29,  81 => 26,  77 => 25,  70 => 21,  64 => 18,  56 => 12,  53 => 11,  47 => 8,  41 => 6,  38 => 5,  30 => 3,  11 => 1,);
+        return array (  243 => 88,  219 => 81,  211 => 76,  207 => 75,  203 => 74,  193 => 73,  187 => 70,  179 => 67,  170 => 63,  164 => 62,  159 => 60,  155 => 58,  138 => 57,  118 => 44,  112 => 41,  107 => 38,  103 => 36,  98 => 34,  95 => 33,  93 => 32,  87 => 29,  81 => 26,  77 => 25,  70 => 21,  64 => 18,  56 => 12,  53 => 11,  47 => 8,  41 => 6,  38 => 5,  30 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
@@ -281,15 +297,20 @@ class __TwigTemplate_ed664bc31e2689a0d69aebe6d463e3e76ad8343b712da39ef0879918c47
 /*                     <p>{{cupon.descripcion}}</p>*/
 /*                 </div>*/
 /* */
-/*                 <div class="col-md-12 tiempo-limitado">TIEMPO LIMITADO!!</div>*/
-/*                 <div class="col-md-12 tiempo">{{ tiempo }}</div>*/
+/*                 {% if tiempo is not null %}*/
+/*                     <div class="col-md-12 tiempo-limitado">TIEMPO LIMITADO!!</div>*/
+/*                     <div class="col-md-12 tiempo">{{ tiempo }}</div>*/
+/*                 {% else %}*/
+/*                     <div class="col-md-12 tiempo">ESTE CUPÓN YA NO ESTÁ A LA VENTA.</div>*/
+/*                 {% endif %}*/
 /* */
 /*                 <div class="col-md-12 caducidad">*/
-/*                     <span>Fecha de caducidad: </span>*/
+/*                     <span>Fecha de caducidad para canjear: </span>*/
 /*                     <span>{{ cupon.fechaFinCanjeo|date('d/m/Y') }}</span>*/
 /*                 </div>*/
 /* */
-/*                 <a id="a-boton-comprar" href="{{ url('redirigiendo_pasarela_pago')}}" class="btn btn-primary">Comprar</a>*/
+/*                 <a id="a-boton-comprar" href="{{ url('redirigiendo_pasarela_pago')}}" class="btn btn-primary {% if tiempo is null %} disabled {% endif %}">Comprar</a>*/
+/*                 */
 /*             </div>*/
 /* */
 /*         </div>*/

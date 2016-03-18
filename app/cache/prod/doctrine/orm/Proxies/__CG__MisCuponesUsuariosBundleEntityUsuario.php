@@ -64,10 +64,10 @@ class Usuario extends \MisCupones\UsuariosBundle\Entity\Usuario implements \Doct
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'email', 'password', 'salt', 'nombre', 'apellidos', 'rol', 'compras', 'usuariosEstablecimientos');
+            return array('__isInitialized__', 'id', 'email', 'password', 'nombre', 'apellidos', 'rol', 'compras', 'usuariosEstablecimientos');
         }
 
-        return array('__isInitialized__', 'id', 'email', 'password', 'salt', 'nombre', 'apellidos', 'rol', 'compras', 'usuariosEstablecimientos');
+        return array('__isInitialized__', 'id', 'email', 'password', 'nombre', 'apellidos', 'rol', 'compras', 'usuariosEstablecimientos');
     }
 
     /**
@@ -571,6 +571,28 @@ class Usuario extends \MisCupones\UsuariosBundle\Entity\Usuario implements \Doct
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRol', array());
 
         return parent::getRol();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function serialize()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'serialize', array());
+
+        return parent::serialize();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function unserialize($serialized)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'unserialize', array($serialized));
+
+        return parent::unserialize($serialized);
     }
 
 }

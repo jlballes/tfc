@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Estadísticas | Cuponify!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link href="{{ asset('bundles/CuponBundle/css/usuario.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="row first-row">
+
+        <div class="col-md-12 col-xs-12">
+            <h3>Estadísticas</h3>
+
+            <p>A continuación se muestran las estadísticas de venta y canjeo de cupones totales, y por establecimiento:</p>
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                {% for key, cupon in out %}
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="heading0">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse0" aria-expanded="false" aria-controls="collapse0" class="">
+                                    {{ cupon['cupon'].getTitulo() }}
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse0" class="collapse in" role="tabpanel" aria-labelledby="heading0" aria-expanded="false">
+                            <div class="panel-body">
+
+                                <div class="totales-por-cupon">
+                                    <span> 
+                                        Vendidos: {{cupon['totales']}} / Canjeados: {{cupon['canjeados']}} 
+                                    </span>
+                                </div>
+                            
+                                {% for key, establ in cupon['establecimientos'] %}
+                                    <div class="totales-por-establecimiento"> 
+                                        <h5>{{ establ['info'].getTitulo() }}</h5>
+                                        <span>Canjeados en este establecimiento: {{establ['canjeados']}}</span>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+                
+            </div>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

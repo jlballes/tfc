@@ -93,7 +93,7 @@ class FrontController extends Controller
     public function usuarioEditarAction(Request $request)
     {   
         //formulario de edición
-        $user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->get('security.context')->getToken()->getUser(); //obtengo usuario logado
         $form = $this->createForm(new UsuarioRegistro(), $user);
 
         $form->handleRequest($request);
@@ -110,9 +110,6 @@ class FrontController extends Controller
         }
 
         //listado de compras
-        //obtengo usuario logado
-        $user = $this->get('security.context')->getToken()->getUser();
-
         //hago query con join para obtener datos del cupon ligado a la compra
         $em = $this->getDoctrine()->getManager();
         $query = $em->createQuery(
@@ -135,5 +132,54 @@ class FrontController extends Controller
         */
 
         return $this->render('UsuariosBundle:Front:usuarioEditar.html.twig', array('form' => $form->createView(), 'compras' => $compras));
+    }
+
+    public function estadisticasAction(Request $request)
+    {
+        $user = $this->get('security.context')->getToken()->getUser(); //obtengo usuario logado
+
+        $output = array();
+        $totales = array();
+        $cont = 0;
+
+        $ue_collection = $user->getUsuariosEstablecimientos();
+        foreach ($ue_collection as $key => $ue) {
+
+            $establecimiento = $ue->getEstablecimiento();
+
+            $output[$cont]['establecimientos'][$establecimiento->getId()]['info'] = $establecimiento;
+            $output[$cont]['establecimientos'][$establecimiento->getId()]['canjeados'] = 0;
+            $output[$cont]['totales'] = 0;
+            $output[$cont]['canjeados'] = 0;
+
+            $ce_collection = $establecimiento->getCuponesEstablecimientos();
+            foreach ($ce_collection as $key => $ce) {
+                $cupon = $ce->getCupon();
+
+                $output[$cont]['cupon'] = $cupon;
+
+                $compras_collection = $cupon->getCompras();
+                $i = 0;
+                foreach ($compras_collection as $key => $compra) {
+                    $output[$cont]['establecimientos'][$establecimiento->getId()]['compras'][$i] = $compra;
+
+                    $output[$cont]['totales']++;
+
+                    if($compra->getCanjeado()) {
+                        $output[$cont]['canjeados']++;
+
+                        if($compra->getEstablecimiento()->getId() == $establecimiento->getId()){
+                            $output[$cont]['establecimientos'][$establecimiento->getId()]['canjeados']++;
+                        }
+                    }
+                }
+
+                $i++;
+            }
+
+            $cont++;
+        }
+
+        return $this->render('UsuariosBundle:Front:estadisticas.html.twig', array('out' => $output));
     }
 }
