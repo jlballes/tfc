@@ -46,6 +46,8 @@ http://stackoverflow.com/questions/5886713/automatic-post-registration-user-auth
 
 * - Revisar memoria, indice y secciones.
 
+* - Estadisticas usuarios de establecimientos
+
 =============
 
 
@@ -54,7 +56,7 @@ http://stackoverflow.com/questions/5886713/automatic-post-registration-user-auth
 PRÓXIMO
 --------
 
-- Estadisticas usuarios de establecimientos
+- Maquetar Estadisticas usuarios de establecimientos
 
 - Admin generator: https://github.com/javiereguiluz/EasyAdminBundle
 
