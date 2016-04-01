@@ -198,6 +198,94 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'MisCupones\\CuponBundle\\Controller\\FrontController::redirigiendoPasarelaPagoAction',  '_route' => 'redirigiendo_pasarela_pago',);
         }
 
+        if (0 === strpos($pathinfo, '/admin')) {
+            // sonata_admin_redirect
+            if (rtrim($pathinfo, '/') === '/admin') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'sonata_admin_redirect');
+                }
+
+                return array (  '_controller' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController::redirectAction',  'route' => 'sonata_admin_dashboard',  'permanent' => 'true',  '_route' => 'sonata_admin_redirect',);
+            }
+
+            // sonata_admin_dashboard
+            if ($pathinfo === '/admin/dashboard') {
+                return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CoreController::dashboardAction',  '_route' => 'sonata_admin_dashboard',);
+            }
+
+            if (0 === strpos($pathinfo, '/admin/core')) {
+                // sonata_admin_retrieve_form_element
+                if ($pathinfo === '/admin/core/get-form-field-element') {
+                    return array (  '_controller' => 'sonata.admin.controller.admin:retrieveFormFieldElementAction',  '_route' => 'sonata_admin_retrieve_form_element',);
+                }
+
+                // sonata_admin_append_form_element
+                if ($pathinfo === '/admin/core/append-form-field-element') {
+                    return array (  '_controller' => 'sonata.admin.controller.admin:appendFormFieldElementAction',  '_route' => 'sonata_admin_append_form_element',);
+                }
+
+                // sonata_admin_short_object_information
+                if (0 === strpos($pathinfo, '/admin/core/get-short-object-description') && preg_match('#^/admin/core/get\\-short\\-object\\-description(?:\\.(?P<_format>html|json))?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'sonata_admin_short_object_information')), array (  '_controller' => 'sonata.admin.controller.admin:getShortObjectDescriptionAction',  '_format' => 'html',));
+                }
+
+                // sonata_admin_set_object_field_value
+                if ($pathinfo === '/admin/core/set-object-field-value') {
+                    return array (  '_controller' => 'sonata.admin.controller.admin:setObjectFieldValueAction',  '_route' => 'sonata_admin_set_object_field_value',);
+                }
+
+            }
+
+            // sonata_admin_search
+            if ($pathinfo === '/admin/search') {
+                return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CoreController::searchAction',  '_route' => 'sonata_admin_search',);
+            }
+
+            // sonata_admin_retrieve_autocomplete_items
+            if ($pathinfo === '/admin/core/get-autocomplete-items') {
+                return array (  '_controller' => 'sonata.admin.controller.admin:retrieveAutocompleteItemsAction',  '_route' => 'sonata_admin_retrieve_autocomplete_items',);
+            }
+
+            if (0 === strpos($pathinfo, '/admin/miscupones/cupon/cupon')) {
+                // admin_miscupones_cupon_cupon_list
+                if ($pathinfo === '/admin/miscupones/cupon/cupon/list') {
+                    return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.cupon',  '_sonata_name' => 'admin_miscupones_cupon_cupon_list',  '_route' => 'admin_miscupones_cupon_cupon_list',);
+                }
+
+                // admin_miscupones_cupon_cupon_create
+                if ($pathinfo === '/admin/miscupones/cupon/cupon/create') {
+                    return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.cupon',  '_sonata_name' => 'admin_miscupones_cupon_cupon_create',  '_route' => 'admin_miscupones_cupon_cupon_create',);
+                }
+
+                // admin_miscupones_cupon_cupon_batch
+                if ($pathinfo === '/admin/miscupones/cupon/cupon/batch') {
+                    return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.cupon',  '_sonata_name' => 'admin_miscupones_cupon_cupon_batch',  '_route' => 'admin_miscupones_cupon_cupon_batch',);
+                }
+
+                // admin_miscupones_cupon_cupon_edit
+                if (preg_match('#^/admin/miscupones/cupon/cupon/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_miscupones_cupon_cupon_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.cupon',  '_sonata_name' => 'admin_miscupones_cupon_cupon_edit',));
+                }
+
+                // admin_miscupones_cupon_cupon_delete
+                if (preg_match('#^/admin/miscupones/cupon/cupon/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_miscupones_cupon_cupon_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.cupon',  '_sonata_name' => 'admin_miscupones_cupon_cupon_delete',));
+                }
+
+                // admin_miscupones_cupon_cupon_show
+                if (preg_match('#^/admin/miscupones/cupon/cupon/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_miscupones_cupon_cupon_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.cupon',  '_sonata_name' => 'admin_miscupones_cupon_cupon_show',));
+                }
+
+                // admin_miscupones_cupon_cupon_export
+                if ($pathinfo === '/admin/miscupones/cupon/cupon/export') {
+                    return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.cupon',  '_sonata_name' => 'admin_miscupones_cupon_cupon_export',  '_route' => 'admin_miscupones_cupon_cupon_export',);
+                }
+
+            }
+
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

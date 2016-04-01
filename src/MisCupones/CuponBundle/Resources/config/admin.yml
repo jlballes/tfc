@@ -1,0 +1,11 @@
+services:
+    sonata.admin.cupon:
+        class: MisCupones\CuponBundle\Admin\CuponAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Cupones" }
+        arguments:
+            - ~
+            - MisCupones\CuponBundle\Entity\Cupon
+            - ~
+        #calls:
+        #    - [ setTranslationDomain, [CuponBundle]]
