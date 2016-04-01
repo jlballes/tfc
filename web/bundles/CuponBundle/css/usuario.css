@@ -14,3 +14,17 @@
 #mis_compras .pendiente{
 	color: green;
 }
+
+.totales-por-cupon span{
+	font-size: 16px;
+    font-weight: bold;
+}
+
+.totales-por-establecimiento{
+	margin-top: 25px;
+	color: #aaa;
+}
+
+.totales-por-establecimiento h5{
+	margin-bottom: 5px
+}

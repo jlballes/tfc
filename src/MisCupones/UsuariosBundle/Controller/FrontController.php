@@ -147,29 +147,29 @@ class FrontController extends Controller
 
             $establecimiento = $ue->getEstablecimiento();
 
-            $output[$cont]['establecimientos'][$establecimiento->getId()]['info'] = $establecimiento;
-            $output[$cont]['establecimientos'][$establecimiento->getId()]['canjeados'] = 0;
-            $output[$cont]['totales'] = 0;
-            $output[$cont]['canjeados'] = 0;
-
             $ce_collection = $establecimiento->getCuponesEstablecimientos();
             foreach ($ce_collection as $key => $ce) {
                 $cupon = $ce->getCupon();
 
-                $output[$cont]['cupon'] = $cupon;
+                $output[$cupon->getId()]['totales'] = 0;
+                $output[$cupon->getId()]['canjeados'] = 0;
+                $output[$cupon->getId()]['cupon'] = $cupon;
+
+                $output[$cupon->getId()]['establecimientos'][$establecimiento->getId()]['info'] = $establecimiento;
+                $output[$cupon->getId()]['establecimientos'][$establecimiento->getId()]['canjeados'] = 0;   
 
                 $compras_collection = $cupon->getCompras();
                 $i = 0;
                 foreach ($compras_collection as $key => $compra) {
-                    $output[$cont]['establecimientos'][$establecimiento->getId()]['compras'][$i] = $compra;
+                    $output[$cupon->getId()]['establecimientos'][$establecimiento->getId()]['compras'][$i] = $compra;
 
-                    $output[$cont]['totales']++;
+                    $output[$cupon->getId()]['totales']++;
 
                     if($compra->getCanjeado()) {
-                        $output[$cont]['canjeados']++;
+                        $output[$cupon->getId()]['canjeados']++;
 
                         if($compra->getEstablecimiento()->getId() == $establecimiento->getId()){
-                            $output[$cont]['establecimientos'][$establecimiento->getId()]['canjeados']++;
+                            $output[$cupon->getId()]['establecimientos'][$establecimiento->getId()]['canjeados']++;
                         }
                     }
                 }
@@ -177,7 +177,7 @@ class FrontController extends Controller
                 $i++;
             }
 
-            $cont++;
+            //$cont++;
         }
 
         return $this->render('UsuariosBundle:Front:estadisticas.html.twig', array('out' => $output));
